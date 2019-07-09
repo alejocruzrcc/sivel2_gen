@@ -3,13 +3,13 @@ xml.relatos do
  xml.relato do
   xml.organizacion_responsable Sivel2Gen::Ability.organizacion_responsable
   xml.derechos Sivel2Gen::Ability.derechos
-  xml.id_relato @caso ['id']
+  xml.id_relato caso ['id']
  #xml.forma_compartir
-  xml.titulo @caso ['titulo']
-  xml.hechos @caso['memo']
+  xml.titulo caso ['titulo']
+  xml.hechos caso['memo']
 
   xml.comment! "Personas"
-  @caso.victima.each do |v|
+  caso.victima.each do |v|
     xml.persona do
       xml.id_persona v.persona.id
       xml.nombre v.persona.nombres
@@ -31,7 +31,7 @@ xml.relatos do
   xml.comment! "Victima Colectiva"
 
   xml.grupo do
-    @caso.victimacolectiva.each do |vc|
+    caso.victimacolectiva.each do |vc|
          xml.id_grupo vc.grupoper.id
          xml.nombre_grupo vc.grupoper.nombre
 	 ['personasaprox','organizacionarmada'].each do |ob|
@@ -49,7 +49,7 @@ xml.relatos do
   end
 
   xml.comment! "Victima"
-  @caso.victima.each do |v|
+  caso.victima.each do |v|
      xml.victima do
 	  xml.id_persona v.persona.id
 	  xml.ocupacion v.profesion.nombre
@@ -68,7 +68,7 @@ xml.relatos do
   xml.comment! "Presuntos responsables individual"
 
   xml.comment! "Presuntos responsables grupo"
-  @caso.caso_presponsable.each do |cpr|
+  caso.caso_presponsable.each do |cpr|
     xml.grupo do
 	xml.id_grupo cpr.presponsable.id
 	xml.nombre cpr.presponsable.nombre
@@ -82,17 +82,17 @@ xml.relatos do
 
 
   xml.comment! "Ubicacion"
-  xml.fecha @caso['fecha']
-  xml.hora @caso['hora']
-  xml.duracion @caso['duracion'] 	
-  xml.departamento @caso['departamento']
-  xml.municipio @caso['municipio']
-  xml.centro_poblado @caso['centro_poblado']
-  xml.longitud @caso['longitud']
-  xml.latitud @caso['latitud']
+  xml.fecha caso['fecha']
+  xml.hora caso['hora']
+  xml.duracion caso['duracion'] 	
+  xml.departamento caso['departamento']
+  xml.municipio caso['municipio']
+  xml.centro_poblado caso['centro_poblado']
+  xml.longitud caso['longitud']
+  xml.latitud caso['latitud']
 
   xml.comment! "Acto contra victima individual"
-  @caso.acto.each do |ac|
+  caso.acto.each do |ac|
      xml.acto do
 	  xml.agresion ac.categoria.pconsolidado.clasificacion
 	  xml.agresion_particular ac.categoria.nombre
@@ -103,7 +103,7 @@ xml.relatos do
   end
 
   xml.comment! "Actos contra victimas colectivas"
-  @caso.actocolectivo.each do |acol|
+  caso.actocolectivo.each do |acol|
      xml.acto do
 	  xml.agresion acol.categoria.nombre
 	  xml.id_victima_colectiva acol.grupoper.id
@@ -111,15 +111,15 @@ xml.relatos do
 	
      end
   end
-  xml.contexto @caso['Contexto']
+  xml.contexto caso['Contexto']
 
   #OTROS
   xml.comment! "Otros" 	
   ['grconfiabilidad', 'gresclarecimiento', 'grimpunidad', 'grinformacion',
    'id_intervalo', 'bienes'].each do |c|
-    xml.observaciones(@caso[c], {tipo: c}) if @caso[c]
+    xml.observaciones(caso[c], {tipo: c}) if caso[c]
   end
-  xml.observaciones(@caso.intervalo.nombre, {tipo: 'intervalo'}) if @caso.intervalo
-  xml.observaciones(@caso['tsitio'], {tipo: 'tsitio'}) if @caso['tsitio']
+  xml.observaciones(caso.intervalo.nombre, {tipo: 'intervalo'}) if caso.intervalo
+  xml.observaciones(caso['tsitio'], {tipo: 'tsitio'}) if caso['tsitio']
  end
 end

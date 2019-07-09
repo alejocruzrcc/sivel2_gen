@@ -141,7 +141,7 @@ module Sivel2Gen
             @plantillas = Heb412Gen::Plantillahcm.where(
               vista: 'Caso').select('nombremenu, id').map { 
                 |c| [c.nombremenu, c.id] }
-            @plantillas += [['Reporte Revista HTML', 'reprevista.html']]
+              @plantillas += [['Reporte Revista HTML', 'reprevista.html'], ['Reporte Revista Xrlat', 'reprevista.xrlt']]
           end
        
           # Valida que el usuario pueda generar la plantilla idplant 
@@ -448,6 +448,21 @@ module Sivel2Gen
             end
             Conscaso.refresca_conscaso
           end
+         
+          # Despliega detalle de un registro
+          def show
+          @caso = @registro = clase.constantize.find(params[:id])
+            if @registro.respond_to?('current_usuario=')
+              @registro.current_usuario = current_usuario
+            end
+            if cannot? :show, @registro
+              # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
+              authorize! :read, @registro
+            end
+            show_plantillas
+            render layout: 'application', locals: {caso: @caso}
+          end
+
 
           # DELETE /casos/1
           # DELETE /casos/1.json
