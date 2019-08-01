@@ -10,6 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require sivel2_gen/underscore
+//= require gmaps/google
 //= require sip/motor
 //= require heb412_gen/motor
 //= require sivel2_gen/motor

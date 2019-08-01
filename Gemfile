@@ -85,6 +85,9 @@ gem 'prawn-table'
 # Zonas horarias
 gem 'tzinfo'
 
+# Mapa
+gem 'gmaps4rails'
+
 # Motor estilo Pasos de Jesús
 gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git'
 #gem 'sip', path: '../sip'
