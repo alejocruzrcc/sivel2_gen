@@ -1,20 +1,20 @@
-{"caso":
+{"caso": 
   {
-    "id":150899,
-    "titulo":"caso completo ejemplo",
-    "hechos":"Paramilitares hirieron con arma de fuego a Kevin Enrique Umaña Morantes, de 18 años de edad, mientras se desplazaba por una calle del barrio Nueva Esperanza, Comuna 5. Según la fuente: “El hecho se presentó el 10 de julio, hacia las 6:00 de la mañana, cuando Umaña Morantes, era perseguido por dos sujetos a bordo de una motocicleta, al percatarse del hecho se refugió una vivienda a donde ingresaron los agresores y le propinaron dos impactos de arma de fuego. La zona tiene presencia de grupos posdesmovilización que se disputan el control territorial”.",
-    "fecha":"2016-07-10",
-    "hora":"6 AM",
-    "departamento":"SANTANDER",
-    "municipio":"BARRANCABERMEJA",
-    "centro_poblado":"",
-    "presponsables":
+    "id": 150899,
+    "titulo": "caso completo ejemplo",
+    "hechos": "Paramilitares hirieron con arma de fuego a Kevin Enrique Umaña Morantes, de 18 años de edad, mientras se desplazaba por una calle del barrio Nueva Esperanza, Comuna 5. Según la fuente: “El hecho se presentó el 10 de julio, hacia las 6:00 de la mañana, cuando Umaña Morantes, era perseguido por dos sujetos a bordo de una motocicleta, al percatarse del hecho se refugió una vivienda a donde ingresaron los agresores y le propinaron dos impactos de arma de fuego. La zona tiene presencia de grupos posdesmovilización que se disputan el control territorial”.",
+    "fecha": "2016-07-10",
+    "hora": "6 AM",
+    "departamento": "SANTANDER",
+    "municipio": "BARRANCABERMEJA",
+    "centro_poblado": "",
+    "presponsables": 
     {
-      "14":"PARAMILITARES"
+      "14": "PARAMILITARES"
     },
-    "victimas":
+    "victimas": 
     {
-      "244839":"KEVIN ENRIQUE UMAÑA MORANTES"
+      "244839": "KEVIN ENRIQUE UMAÑA MORANTES"
     }
   }
 }

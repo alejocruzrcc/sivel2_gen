@@ -1,9 +1,10 @@
 # frozen_string_literal:true
 
 require 'test_helper'
-require 'nokogiri'
 require 'open-uri'
-require 'compare-xml'
+require 'json_utilities'
+require 'minitest/autorun'
+require 'json'
 
 module Sivel2Gen
   class PersonasXml < PruebaIntegracion
@@ -124,10 +125,11 @@ module Sivel2Gen
       )
       get caso_path(caso) + '.json'
       d12 = 'test/dummy/public/detallejson_ref.json'
-      puts @response.body
-      assert :success 
+      #puts @response.body
+      #assert :success 
       file = guarda_xml(@response.body)
       docu = File.read(file)
+      puts JSON.parse(d12.gsub('\"', '"'))    
       compara(docu, d12)
       ubicaso.destroy
       caso.destroy
@@ -140,15 +142,10 @@ module Sivel2Gen
       victima1.destroy
     end
 
-    def compara(doc2, doc12)
-      doc1 = Nokogiri::XML(doc2)
-      doc2 = Nokogiri::XML(open(doc12))
-      puts CompareXML.equivalent?(
-        doc1, doc2, ignore_comments: false, verbose: true
-      )
-      assert_empty CompareXML.equivalent?(
-        doc1, doc2, ignore_comments: false, verbose: true
-      )
+    def compara(json_ob, json_es)
+      puts JSON.pretty_generate(json_ob)
+      puts JSON.parse(json_ob.gsub('\"', '"'))    
+      assert(JsonUtilities.compare_json(json_ob,json_es), "Fallas en la comparación")
     end
   end
 end
