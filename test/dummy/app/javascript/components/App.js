@@ -59,7 +59,6 @@ class App extends Component {
     
     fetchData = () =>
         fetch('/sivel2/casos/infomapa/datoscovid').then((res) => res.json()).then((res) => {
-            debugger
             //const latest = Object.keys(res[str.GLOBAL_ZH].confirmedCount).pop()
             const latest = '2020-07-01'  
             this.setState({
