@@ -90,21 +90,8 @@ export default class Plot extends Component {
         this.setState({ plotSpecificType: specificType })
     }
 
-    getCases = (data) => {
-         var casesRefact = [];
-          
-        // var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
-        //      casosUrl = 'https://base.nocheyniebla.org/casos.json?filtro[q]=&filtro[fechaini]=2018-07-03&filtro[fechafin]=2020-06-30&filtro[disgenera]=reprevista.json&idplantilla=reprevista'
-      	//fetch(proxyUrl + casosUrl).then((res) => res.json()).then((res) => {
-      	fetch("/sivel2/casos/cuenta").then((res) => res.json()).then((res) => {
-          const cases = res;
-          this.changeData(data, res["casos"])
-          })
-    }
-    
     render() {
         const { plotType, data, lang, darkMode, fullPlot, fullTree, fullPlotToggle, fullDimensions } = this.props
-        this.getCases(data)
         if (data == null || fullTree) return <div />
 
         const plotParameters = plotSpecificTypes[this.state.plotSpecificType]

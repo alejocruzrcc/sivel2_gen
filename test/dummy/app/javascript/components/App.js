@@ -16,7 +16,6 @@ import NavBar from './NavBar'
 import Loading from './Loading'
 import Footer from './Footer'
 import Region from './Region'
-import TransmissionNetwork from './TransmissionNetwork'
 import i18n from 'js-yaml-loader!../../assets/data/i18n.yml';
 import * as str from '../utils/strings'
 import { updateDarkMode, isoDate } from '../utils/utils'
@@ -59,8 +58,7 @@ class App extends Component {
     
     fetchData = () =>
         fetch('/sivel2/casos/infomapa/datoscovid').then((res) => res.json()).then((res) => {
-            //const latest = Object.keys(res[str.GLOBAL_ZH].confirmedCount).pop()
-            const latest = '2020-07-01'  
+            const latest = Object.keys(res[str.COLOMBIA_ZH].confirmedCount).pop()
             this.setState({
                 data: res,
                 dataLoaded: true,
@@ -75,7 +73,7 @@ class App extends Component {
             this.tooltipRebuild()
         })
 
-  getCases = (data) => {
+    getCases = (data) => {
        var casesRefact = [];
 	
       // var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
@@ -135,7 +133,6 @@ class App extends Component {
 	})
 	console.log("Data Obj refact: ", obj)
     }
-
     componentDidMount() {
         updateDarkMode(this.state.darkMode)
         this.fetchData()
@@ -230,7 +227,6 @@ class App extends Component {
     tooltipRebuild = () => ReactTooltip.rebuild()
     changeDataJSON = (data) => {
     
-    	console.log("Data Two: ", data)
     }
   
   render(){
