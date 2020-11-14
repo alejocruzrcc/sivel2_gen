@@ -91,6 +91,7 @@ module Sivel2Gen
               :grabacion,
               :id,
               :nombreusuario,
+              :hechos,
               :organizacion,
               :otrotipotestigo,
               :parentezco,
@@ -98,6 +99,7 @@ module Sivel2Gen
               :tipotestigo_id,
               :ubicacionpre_id,
               :ubicacionpre_texto,
+              :ubicaespecifica,
               :persona_attributes => [
                 :anionac,
                 :apellidos,
