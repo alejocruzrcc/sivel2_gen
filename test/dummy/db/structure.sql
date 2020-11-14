@@ -2682,6 +2682,41 @@ CREATE MATERIALIZED VIEW public.sivel2_gen_conscaso AS
 
 
 --
+-- Name: sivel2_gen_consexpcaso; Type: MATERIALIZED VIEW; Schema: public; Owner: -
+--
+
+CREATE MATERIALIZED VIEW public.sivel2_gen_consexpcaso AS
+ SELECT conscaso.caso_id,
+    conscaso.fecha,
+    conscaso.memo,
+    conscaso.ubicaciones,
+    conscaso.victimas,
+    conscaso.presponsables,
+    conscaso.tipificacion,
+    conscaso.ultimo_refresco,
+    conscaso.q,
+    caso.titulo,
+    caso.hora,
+    caso.duracion,
+    caso.grconfiabilidad,
+    caso.gresclarecimiento,
+    caso.grimpunidad,
+    caso.grinformacion,
+    caso.bienes,
+    caso.id_intervalo,
+    caso.created_at,
+    caso.updated_at
+   FROM (public.sivel2_gen_conscaso conscaso
+     JOIN public.sivel2_gen_caso caso ON ((caso.id = conscaso.caso_id)))
+  WHERE (conscaso.caso_id IN ( SELECT sivel2_gen_conscaso.caso_id
+           FROM public.sivel2_gen_conscaso
+          WHERE ((sivel2_gen_conscaso.fecha >= '2018-01-01'::date) AND (sivel2_gen_conscaso.fecha <= '2018-01-31'::date))
+          ORDER BY sivel2_gen_conscaso.ubicaciones, sivel2_gen_conscaso.caso_id))
+  ORDER BY conscaso.ubicaciones, conscaso.caso_id
+  WITH NO DATA;
+
+
+--
 -- Name: sivel2_gen_contexto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -2750,16 +2785,6 @@ ALTER SEQUENCE public.sivel2_gen_contextovictima_id_seq OWNED BY public.sivel2_g
 CREATE TABLE public.sivel2_gen_contextovictima_victima (
     contextovictima_id integer,
     victima_id integer
-);
-
-
---
--- Name: sivel2_gen_dep_region; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_dep_region (
-    departamento_id integer,
-    region_id integer
 );
 
 
@@ -3093,7 +3118,14 @@ CREATE TABLE public.sivel2_gen_lugarpreliminar (
     nombreusuario character varying,
     organizacion character varying,
     ubicacionpre_id integer,
-    id_persona integer
+    id_persona integer,
+    parentezco character varying,
+    grabacion boolean,
+    telefono character varying,
+    tipotestigo_id integer,
+    otrotipotestigo character varying,
+    hechos text,
+    ubicaespecifica text
 );
 
 
@@ -3148,16 +3180,6 @@ CREATE SEQUENCE public.sivel2_gen_maternidad_id_seq
 --
 
 ALTER SEQUENCE public.sivel2_gen_maternidad_id_seq OWNED BY public.sivel2_gen_maternidad.id;
-
-
---
--- Name: sivel2_gen_mun_region; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_mun_region (
-    municipio_id integer,
-    region_id integer
-);
 
 
 --
@@ -3425,6 +3447,40 @@ CREATE TABLE public.sivel2_gen_sectorsocialsec_victima (
     sectorsocial_id integer,
     victima_id integer
 );
+
+
+--
+-- Name: sivel2_gen_tipotestigo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_tipotestigo (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sivel2_gen_tipotestigo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_tipotestigo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_tipotestigo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sivel2_gen_tipotestigo_id_seq OWNED BY public.sivel2_gen_tipotestigo.id;
 
 
 --
@@ -3783,6 +3839,13 @@ ALTER TABLE ONLY public.sivel2_gen_maternidad ALTER COLUMN id SET DEFAULT nextva
 --
 
 ALTER TABLE ONLY public.sivel2_gen_resagresion ALTER COLUMN id SET DEFAULT nextval('public.sivel2_gen_resagresion_id_seq'::regclass);
+
+
+--
+-- Name: sivel2_gen_tipotestigo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_tipotestigo ALTER COLUMN id SET DEFAULT nextval('public.sivel2_gen_tipotestigo_id_seq'::regclass);
 
 
 --
@@ -4538,6 +4601,14 @@ ALTER TABLE ONLY public.sip_tdocumento
 
 
 --
+-- Name: sivel2_gen_tipotestigo sivel2_gen_tipotestigo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_tipotestigo
+    ADD CONSTRAINT sivel2_gen_tipotestigo_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sip_tsitio sivel2_gen_tsitio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4747,20 +4818,6 @@ CREATE INDEX index_sivel2_gen_contextovictima_victima_on_victima_id ON public.si
 
 
 --
--- Name: index_sivel2_gen_dep_region_on_departamento_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_sivel2_gen_dep_region_on_departamento_id ON public.sivel2_gen_dep_region USING btree (departamento_id);
-
-
---
--- Name: index_sivel2_gen_dep_region_on_region_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_sivel2_gen_dep_region_on_region_id ON public.sivel2_gen_dep_region USING btree (region_id);
-
-
---
 -- Name: index_sivel2_gen_etnia_victimacolectiva_on_etnia_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -4772,20 +4829,6 @@ CREATE INDEX index_sivel2_gen_etnia_victimacolectiva_on_etnia_id ON public.sivel
 --
 
 CREATE INDEX index_sivel2_gen_etnia_victimacolectiva_on_victimacolectiva_id ON public.sivel2_gen_etnia_victimacolectiva USING btree (victimacolectiva_id);
-
-
---
--- Name: index_sivel2_gen_mun_region_on_municipio_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_sivel2_gen_mun_region_on_municipio_id ON public.sivel2_gen_mun_region USING btree (municipio_id);
-
-
---
--- Name: index_sivel2_gen_mun_region_on_region_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_sivel2_gen_mun_region_on_region_id ON public.sivel2_gen_mun_region USING btree (region_id);
 
 
 --
@@ -5330,14 +5373,6 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
--- Name: sivel2_gen_categoria categoria_contadaen_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_categoria
-    ADD CONSTRAINT categoria_contadaen_fkey FOREIGN KEY (contadaen) REFERENCES public.sivel2_gen_categoria(id);
-
-
---
 -- Name: sip_departamento departamento_id_pais_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5391,14 +5426,6 @@ ALTER TABLE ONLY public.sivel2_gen_sectorsocialsec_victima
 
 ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
     ADD CONSTRAINT fk_rails_118837ae4c FOREIGN KEY (id_presponsable) REFERENCES public.sivel2_gen_presponsable(id);
-
-
---
--- Name: sivel2_gen_dep_region fk_rails_12bc082843; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_dep_region
-    ADD CONSTRAINT fk_rails_12bc082843 FOREIGN KEY (departamento_id) REFERENCES public.sip_departamento(id);
 
 
 --
@@ -5546,11 +5573,11 @@ ALTER TABLE ONLY public.sip_actorsocial
 
 
 --
--- Name: sivel2_gen_dep_region fk_rails_5b4f5b0f80; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_lugarpreliminar fk_rails_5e5b3c168d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sivel2_gen_dep_region
-    ADD CONSTRAINT fk_rails_5b4f5b0f80 FOREIGN KEY (region_id) REFERENCES public.sivel2_gen_region(id);
+ALTER TABLE ONLY public.sivel2_gen_lugarpreliminar
+    ADD CONSTRAINT fk_rails_5e5b3c168d FOREIGN KEY (tipotestigo_id) REFERENCES public.sivel2_gen_tipotestigo(id);
 
 
 --
@@ -5778,14 +5805,6 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- Name: sivel2_gen_mun_region fk_rails_cda1614214; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_mun_region
-    ADD CONSTRAINT fk_rails_cda1614214 FOREIGN KEY (municipio_id) REFERENCES public.sip_municipio(id);
-
-
---
 -- Name: sivel2_gen_sectorsocialsec_victima fk_rails_e04ef7c3e5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5807,14 +5826,6 @@ ALTER TABLE ONLY public.heb412_gen_campoplantillahcm
 
 ALTER TABLE ONLY public.sivel2_gen_combatiente
     ADD CONSTRAINT fk_rails_e2d01a5a99 FOREIGN KEY (id_sectorsocial) REFERENCES public.sivel2_gen_sectorsocial(id);
-
-
---
--- Name: sivel2_gen_mun_region fk_rails_e81a5f3fb8; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_mun_region
-    ADD CONSTRAINT fk_rails_e81a5f3fb8 FOREIGN KEY (region_id) REFERENCES public.sivel2_gen_region(id);
 
 
 --
@@ -5911,14 +5922,6 @@ ALTER TABLE ONLY public.sip_persona
 
 ALTER TABLE ONLY public.sip_persona
     ADD CONSTRAINT persona_tdocumento_id_fkey FOREIGN KEY (tdocumento_id) REFERENCES public.sip_tdocumento(id);
-
-
---
--- Name: sivel2_gen_presponsable presponsable_papa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_presponsable
-    ADD CONSTRAINT presponsable_papa_fkey FOREIGN KEY (papa) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --
@@ -6464,6 +6467,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190926143845'),
 ('20191012042159'),
 ('20191016100031'),
+('20191021021621'),
 ('20191205200007'),
 ('20191205202150'),
 ('20191205204511'),
@@ -6487,7 +6491,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200722210144'),
 ('20200723133542'),
 ('20200727021707'),
-('20200826162250'),
 ('20200907165157'),
 ('20200907174303'),
 ('20200916022934'),
@@ -6497,10 +6500,14 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201021214107'),
 ('20201029153649'),
 ('20201029162732'),
-('20201029180113'),
 ('20201029220052'),
-('20201030214942'),
-('20201030234211'),
-('20201102232506');
+('20201102232506'),
+('20201103175114'),
+('20201105154106'),
+('20201106155800'),
+('20201108201914'),
+('20201108203930'),
+('20201110170225'),
+('20201110170728');
 
 
