@@ -15,7 +15,7 @@ class DatosiniTipotestigo < ActiveRecord::Migration[6.0]
 
   def down
     execute <<-SQL
-      DELETE FROM public.tipotestigo WHERE id>='1' AND id<='4'
+      DELETE FROM public.sivel2_gen_tipotestigo WHERE id>='1' AND id<='4'
     SQL
   end
 end
