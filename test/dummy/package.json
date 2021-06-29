@@ -23,9 +23,19 @@
   },
   "devDependencies": {
     "glob-parent": "^5.1.2",
+    "jest": "^27.0.5",
     "normalize-url": "^4.5.1",
     "postcss": "^8.2.10",
     "webpack-dev-server": "^3.11.2",
     "ws": "^7.4.6"
+  },
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch"
+  },
+  "jest": {
+    "roots": [
+      "../../test/javascript"
+    ]
   }
 }
