@@ -353,6 +353,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  ruby
   x86_64-openbsd
 
 DEPENDENCIES
@@ -361,12 +362,12 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   cancancan
   cocoon!
-  coffee-rails
+  coffee-rails (>= 5.0.0)
   colorize
   compare-xml (~> 0.5.2)
-  devise
-  devise-i18n
-  dotenv-rails
+  devise (>= 4.8.0)
+  devise-i18n (>= 1.10.0)
+  dotenv-rails (>= 2.7.6)
   heb412_gen!
   jbuilder
   kt-paperclip!
@@ -377,25 +378,25 @@ DEPENDENCIES
   pg
   prawn
   prawn-table
-  prawnto_2
+  prawnto_2 (>= 0.3.1)
   puma
-  rails (~> 6.1)
-  rails-controller-testing
+  rails (~> 6.1, >= 6.1.4.1)
+  rails-controller-testing (>= 1.0.5)
   rails-erd
-  rails-i18n
+  rails-i18n (>= 6.0.0)
   redcarpet
   rspreadsheet
   rubyzip (>= 2.0)
-  sassc-rails
-  simple_form
+  sassc-rails (>= 2.1.2)
+  simple_form (>= 5.1.0)
   simplecov (< 0.18)
   sip!
   thor
   twitter_cldr
   tzinfo
-  web-console
+  web-console (>= 4.1.0)
   webpacker (~> 6.0.0.rc.1)
   will_paginate
 
 BUNDLED WITH
-   2.2.25
+   2.1.4
