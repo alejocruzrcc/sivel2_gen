@@ -353,6 +353,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  ruby
   x86_64-openbsd
 
 DEPENDENCIES
@@ -377,9 +378,9 @@ DEPENDENCIES
   pg
   prawn
   prawn-table
-  prawnto_2
+  prawnto_2 (>= 0.3.1)
   puma
-  rails (~> 6.1)
+  rails (~> 6.1, >= 6.1.4.1)
   rails-controller-testing
   rails-erd
   rails-i18n
@@ -398,4 +399,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.2.25
+   2.1.4

@@ -33,11 +33,11 @@ gem 'pg' # Postgresql
 
 gem 'prawn' # Generación de PDF
 
-gem 'prawnto_2',  :require => 'prawnto'
+gem 'prawnto_2', '>= 0.3.1', :require => 'prawnto'
 
 gem 'prawn-table'
 
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 6.1', '>= 6.1.4.1'
   #git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
 gem 'rails-i18n'
