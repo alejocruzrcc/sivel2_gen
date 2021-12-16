@@ -11,15 +11,15 @@ gem 'cancancan'# Roles
 gem 'cocoon', git: 'https://github.com/vtamara/cocoon.git', 
   branch: 'new_id_with_ajax'# Formularios anidados (algunos con ajax)
 
-gem 'coffee-rails' # CoffeeScript para recuersos .js.coffee y vistas
+gem 'coffee-rails' , '>= 5.0.0' # CoffeeScript para recuersos .js.coffee y vistas
 
 gem 'color' # Maneja colores RGB
 
 gem 'jbuilder' # API JSON facil. Ver: https://github.com/rails/jbuilder
 
-gem 'devise' # Autenticación 
+gem 'devise' , '>= 4.8.0' # Autenticación 
 
-gem 'devise-i18n'
+gem 'devise-i18n', '>= 1.10.1'
 
 gem 'kt-paperclip',                 # Anexos
   git: 'https://github.com/kreeti/kt-paperclip.git'
@@ -34,14 +34,14 @@ gem 'pg' # Postgresql
 
 gem 'prawn' # Generación de PDF
 
-gem 'prawnto_2',  :require => 'prawnto'
+gem 'prawnto_2', '>= 0.3.1', :require => 'prawnto'
 
 gem 'prawn-table'
 
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 6.1', '>= 6.1.4.2'
   #git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
-gem 'rails-i18n'
+gem 'rails-i18n', '>= 6.0.0'
 
 gem 'redcarpet' # Opera Markdown
 
@@ -49,9 +49,9 @@ gem 'rspreadsheet'
 
 gem 'rubyzip', '>= 2.0'
 
-gem 'sassc-rails' # Hojas de estilo con SCSS
+gem 'sassc-rails' , '>= 2.1.2' # Hojas de estilo con SCSS
 
-gem 'simple_form' # Formularios simples 
+gem 'simple_form' , '>= 5.1.0' # Formularios simples 
 
 gem 'twitter_cldr' # ICU con CLDR
 
@@ -86,7 +86,7 @@ group :development do
 
   gem "thor" # Requerido por rake
 
-  gem 'web-console'
+  gem 'web-console', '>= 4.2.0'
 end
 
 
@@ -99,9 +99,9 @@ group  :development, :test do
 
   gem 'colorize' # Colores en terminal
 
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', '>= 2.7.6'
 
-  gem 'rails-controller-testing'
+  gem 'rails-controller-testing', '>= 1.0.5'
 
   gem 'simplecov', '<0.18' # Debido a https://github.com/codeclimate/test-reporter/issues/418
 end
