@@ -35,7 +35,7 @@ gem 'libxml-ruby' # Genera ODS
 
 gem 'odf-report' # Genera ODT
 
-gem 'nokogiri', '>=1.11.1'
+gem 'nokogiri', '>= 1.13.2'
 
 gem 'pg' # Postgresql
 
@@ -45,7 +45,7 @@ gem 'prawnto_2',  :require => 'prawnto'
 
 gem 'prawn-table'
 
-gem 'rails', '~> 7.0'
+gem 'rails', '~> 7.0', '>= 7.0.1'
   #git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
 gem 'rails-i18n'
