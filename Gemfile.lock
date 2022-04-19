@@ -376,6 +376,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  ruby
   x86_64-openbsd
 
 DEPENDENCIES
@@ -400,14 +401,14 @@ DEPENDENCIES
   kt-paperclip!
   libxml-ruby
   mr519_gen!
-  nokogiri (>= 1.11.1)
+  nokogiri (>= 1.13.4)
   odf-report
   pg
   prawn
   prawn-table
   prawnto_2
   puma
-  rails (~> 7.0)
+  rails (~> 7.0, >= 7.0.2.3)
   rails-controller-testing
   rails-erd
   rails-i18n
@@ -421,11 +422,11 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   thor
-  turbo-rails (~> 1.0)
+  turbo-rails (~> 1.0, >= 1.0.1)
   twitter_cldr
   tzinfo
   web-console
   will_paginate
 
 BUNDLED WITH
-   2.3.7
+   2.1.4
