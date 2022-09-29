@@ -45,7 +45,7 @@ gem 'prawnto_2',  :require => 'prawnto'
 
 gem 'prawn-table'
 
-gem 'rails', '~> 7.0'
+gem 'rails', '~> 7.0', '>= 7.0.4'
   #git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
 gem 'rails-i18n'
@@ -64,7 +64,7 @@ gem 'sprockets-rails'
 
 gem 'stimulus-rails'
 
-gem 'turbo-rails', '~> 1.0'
+gem 'turbo-rails', '~> 1.1', '>= 1.1.1'
 
 gem 'twitter_cldr' # ICU con CLDR
 
