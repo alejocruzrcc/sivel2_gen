@@ -369,6 +369,7 @@ GEM
     zeitwerk (2.6.3)
 
 PLATFORMS
+  ruby
   x86_64-openbsd
 
 DEPENDENCIES
@@ -400,7 +401,7 @@ DEPENDENCIES
   prawn-table
   prawnto_2
   puma
-  rails (~> 7.0)
+  rails (~> 7.0, >= 7.0.4)
   rails-controller-testing
   rails-erd
   rails-i18n
@@ -414,11 +415,11 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   thor
-  turbo-rails (~> 1.0)
+  turbo-rails (~> 1.3, >= 1.3.1)
   twitter_cldr
   tzinfo
   web-console
   will_paginate
 
 BUNDLED WITH
-   2.3.24
+   2.1.4
