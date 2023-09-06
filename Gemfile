@@ -97,7 +97,7 @@ group :development do
 
   gem "thor" # Requerido por rake
 
-  gem 'web-console'
+  gem 'web-console', '>= 4.2.1'
 end
 
 
