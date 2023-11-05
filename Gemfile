@@ -116,5 +116,5 @@ group  :development, :test do
 end
 
 group :test do
-  gem 'cuprite'
+  gem 'cuprite', '>= 0.15'
 end
