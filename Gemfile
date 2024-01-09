@@ -91,7 +91,7 @@ gem 'heb412_gen',  # Motor de nube y llenado de plantillas
 
 
 group :development do
-  gem 'puma'
+  gem 'puma', '>= 6.4.2'
 
   gem 'rails-erd' # Para generar modelo entidad asociación 
 
