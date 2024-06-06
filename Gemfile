@@ -60,7 +60,7 @@ gem 'sassc-rails' # Hojas de estilo con SCSS
 
 gem 'simple_form' # Formularios simples 
 
-gem 'sprockets-rails'
+gem 'sprockets-rails', '>= 3.5.0'
 
 gem 'stimulus-rails'
 
