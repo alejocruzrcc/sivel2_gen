@@ -64,7 +64,7 @@ gem 'sprockets-rails'
 
 gem 'stimulus-rails'
 
-gem 'turbo-rails', '~> 1.0'
+gem 'turbo-rails', '~> 2.0', '>= 2.0.8'
 
 gem 'twitter_cldr' # ICU con CLDR
 
