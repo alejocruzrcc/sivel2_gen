@@ -237,7 +237,7 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    nio4r (2.5.8)
+    nio4r (2.7.3)
     nokogiri (1.14.0)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
@@ -259,7 +259,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.1)
-    puma (6.0.2)
+    puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.5)
@@ -376,6 +376,7 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
+  ruby
   x86_64-linux
   x86_64-openbsd
 
@@ -407,7 +408,7 @@ DEPENDENCIES
   prawn
   prawn-table
   prawnto_2
-  puma
+  puma (>= 6.4.3)
   rails (~> 7.0)
   rails-controller-testing
   rails-erd
