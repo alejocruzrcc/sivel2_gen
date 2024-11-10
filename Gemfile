@@ -48,7 +48,7 @@ gem 'prawn-table'
 gem 'rails', '~> 7.0'
   #git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
-gem 'rails-i18n'
+gem 'rails-i18n', '>= 8.0.0'
 
 gem 'redcarpet' # Opera Markdown
 
