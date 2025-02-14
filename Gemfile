@@ -45,7 +45,7 @@ gem 'prawnto_2',  :require => 'prawnto'
 
 gem 'prawn-table'
 
-gem 'rails', '~> 7.0'
+gem 'rails', '~> 7.2', '>= 7.2.0'
   #git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
 gem 'rails-i18n'
