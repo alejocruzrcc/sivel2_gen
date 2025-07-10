@@ -20,20 +20,20 @@ gem 'coffee-rails' # CoffeeScript para recuersos .js.coffee y vistas
 
 gem 'color' # Maneja colores RGB
 
-gem 'jbuilder' # API JSON facil. Ver: https://github.com/rails/jbuilder
+gem 'jbuilder' , '>= 2.12.0' # API JSON facil. Ver: https://github.com/rails/jbuilder
 
-gem 'jsbundling-rails'
+gem 'jsbundling-rails', '>= 1.1.2'
 
-gem 'devise' # Autenticación 
+gem 'devise' , '>= 4.9.0' # Autenticación 
 
-gem 'devise-i18n'
+gem 'devise-i18n', '>= 1.10.3'
 
 gem 'kt-paperclip',                 # Anexos
   git: 'https://github.com/kreeti/kt-paperclip.git'
 
 gem 'libxml-ruby' # Genera ODS
 
-gem 'odf-report' # Genera ODT
+gem 'odf-report' , '>= 0.8.0' # Genera ODT
 
 gem 'nokogiri', '>=1.11.1'
 
@@ -45,10 +45,10 @@ gem 'prawnto_2',  :require => 'prawnto'
 
 gem 'prawn-table'
 
-gem 'rails', '~> 7.0'
+gem 'rails', '~> 7.1', '>= 7.1.0'
   #git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
-gem 'rails-i18n'
+gem 'rails-i18n', '>= 7.0.7'
 
 gem 'redcarpet' # Opera Markdown
 
@@ -58,13 +58,13 @@ gem 'rubyzip', '>= 2.0'
 
 gem 'sassc-rails' # Hojas de estilo con SCSS
 
-gem 'simple_form' # Formularios simples 
+gem 'simple_form' , '>= 5.2.0' # Formularios simples 
 
-gem 'sprockets-rails'
+gem 'sprockets-rails', '>= 3.5.0'
 
-gem 'stimulus-rails'
+gem 'stimulus-rails', '>= 1.2.2'
 
-gem 'turbo-rails', '~> 1.0'
+gem 'turbo-rails', '~> 1.3', '>= 1.3.3'
 
 gem 'twitter_cldr' # ICU con CLDR
 
@@ -97,18 +97,18 @@ group :development do
 
   gem "thor" # Requerido por rake
 
-  gem 'web-console'
+  gem 'web-console', '>= 4.2.1'
 end
 
 
 group  :development, :test do
   gem 'debug'
 
-  gem 'compare-xml', '~> 0.5.2' # para validar xml
+  gem 'compare-xml', '~> 0.6.0' # para validar xml
 
   gem 'colorize' # Colores en terminal
 
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', '>= 3.0.0'
 
   gem 'rails-controller-testing'
 
@@ -116,5 +116,5 @@ group  :development, :test do
 end
 
 group :test do
-  gem 'cuprite'
+  gem 'cuprite', '>= 0.15'
 end
